@@ -1,0 +1,23 @@
+{
+    "comments":"//TODO: Replace Placeholders with actual urls ",
+    "twitter":"url",
+    "facebook":"url ",
+    "clinicDates": ["Jan 1", "Feb 3", "March 5"],
+    "address":"300 Gurdwara Rd,Fremont, CA 94536",
+    "email":"bhavpreetsingh93@gmail.com",
+    "mobNo":6505337085,
+    "telNo":6505337085,
+    "teamInfo":[
+        {
+            "name":"Bhavpreet",
+
+            "type": "volunteer"
+        }
+    ],
+    "aboutus":[
+        {
+            
+        }
+
+    ]
+}
