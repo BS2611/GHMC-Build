@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Isotope from "isotope-layout";
 import ProjectDetailsModal from "./ProjectDetailsModal";
+import { getJson } from "../config/config";
 const Team = ({ classicHeader, darkTheme }) => {
   // init one ref to store the future isotope object
   const isotope = useRef();
@@ -351,21 +352,41 @@ const Team = ({ classicHeader, darkTheme }) => {
                               "card-body " + (darkTheme ? "text-white" : "")
                             }
                           >
-                              <h3 className={darkTheme ? "text-white" : ""} id ="nameMember">
-                                Name
-                              </h3>
-                            <p className={"card-text " + (darkTheme ? "text-white" : "")}>
+                            <h3
+                              className={darkTheme ? "text-white" : ""}
+                              id="nameMember"
+                            >
+                              Name
+                            </h3>
+                            <p
+                              className={
+                                "card-text " + (darkTheme ? "text-white" : "")
+                              }
+                            >
                               This is a wider card with supporting text below as
                               a natural lead-in to additional content. This
                               content is a little bit longer.
                             </p>
-                           
                           </div>
                         </button>
                       </div>
                     </div>
                   </div>
                 ))}
+            </div>
+            <div className="join-team">
+              <label id="join-lbl" className="text-6 text-primary join-comp">
+                Want to join Our Team ?
+              </label>
+              <a
+                href={getJson("volunteer-form")}
+                id="join-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="join-comp btn btn-outline-primary rounded-pill shadow-none smooth-scroll mt-2"
+              >
+                Join
+              </a>
             </div>
           </div>
         </div>

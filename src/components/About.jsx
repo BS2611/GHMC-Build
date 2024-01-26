@@ -1,5 +1,6 @@
 import React from "react";
 import resumeFile from "../documents/resume.pdf";
+import Testimonials from "./Testimonials";
 const AboutUs = ({ classicHeader, darkTheme }) => {
   return (
     <section id="about" className={"section " + (darkTheme ? "bg-dark-1" : "")}>
@@ -12,7 +13,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-muted opacity-1" : "text-light opacity-4")
             }
           >
-            About Me
+            About US
           </h2>
           <p
             className={
@@ -20,7 +21,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               (darkTheme ? "text-white" : "text-dark")
             }
           >
-            Know Me More
+            Know Us More
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
@@ -148,7 +149,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                   <span>38</span>
                 </h4>
                 <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Get Awards
+                  {"Get Awards"}
                 </p>
               </div>
             </div>
@@ -156,6 +157,8 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
         </div>
         {/* projects rewards counting end */}
       </div>
+      {/* TODO: Remove this tag later */}
+      {/* <Testimonials classicHeader ={classicHeader} darkTheme ={darkTheme}></Testimonials> */}
     </section>
   );
 };

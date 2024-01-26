@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Tooltip } from "./Tooltip";
 import { Link } from "react-scroll";
+import { getJson } from "../config/config";
 
 const ClassicHeader = ({ handleNavClick }) => {
   const [stickyHeader, setStickyHeader] = useState(false);
@@ -51,6 +52,7 @@ const ClassicHeader = ({ handleNavClick }) => {
               }}
             >
               {" "}
+              {/*"TODO:Rename filename to GHMC logo and delete the old logo files "*/}
               <img src="images/logo-light.png" alt="Simone" />{" "}
             </Link>
             {/* Logo End */}
@@ -175,6 +177,23 @@ const ClassicHeader = ({ handleNavClick }) => {
                     spy
                     activeClass="active"
                     className="nav-link"
+                    to="schedule"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setIsNavModalClose(true);
+                    }}
+                  >
+                    Schedule
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    smooth
+                    duration={500}
+                    style={{ cursor: "pointer" }}
+                    spy
+                    activeClass="active"
+                    className="nav-link"
                     to="testimonial"
                     onClick={(e) => {
                       e.preventDefault();
@@ -220,7 +239,7 @@ const ClassicHeader = ({ handleNavClick }) => {
               <li className="social-icons-facebook">
                 <Tooltip text="Facebook" placement="top">
                   <a
-                    href="http://www.facebook.com/"
+                    href={getJson("facebook-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

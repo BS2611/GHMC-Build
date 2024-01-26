@@ -12,6 +12,7 @@
     "isotope-layout": "^3.0.6",
     "react": "^18.2.0",
     "react-countup": "^6.3.1",
+    "react-date-object": "^2.1.8",
     "react-dom": "^18.2.0",
     "react-native-filesystem": "^0.1.0",
     "react-native-fs": "^2.20.0",

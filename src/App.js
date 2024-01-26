@@ -16,6 +16,9 @@ import Disclaimer from "./components/Disclaimer";
 import PreLoader from "./components/Preloader";
 import { Tooltip } from "./components/Tooltip";
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Schedule from "./components/Schedule";
+
 
 function App() {
   const classicHeader = commonConfig.classicHeader;
@@ -27,6 +30,7 @@ function App() {
 
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
   const [isLoading, setisLoading] = useState(true);
+  const[compNo, setCompNo] = useState(0);
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setisLoading(false);
@@ -61,6 +65,7 @@ function App() {
         style={{ position: "relative" }}
         className={classicHeader ? "" : "side-header"}
       >
+
         {isLoading && <PreLoader></PreLoader>}
 
         <div id="main-wrapper">
@@ -69,12 +74,13 @@ function App() {
           ) : (
             <Header handleNavClick={handleNavClick}></Header>
           )}
-
           <div id="content" role="main">
+            
             <Home
               classicHeader={classicHeader}
               darkTheme={darkTheme}
               handleNavClick={handleNavClick}
+              // compNo = {getCompNo()}
             ></Home>
             <AboutUs
               classicHeader={classicHeader}
@@ -92,6 +98,7 @@ function App() {
               classicHeader={classicHeader}
               darkTheme={darkTheme}
             ></Team>
+            <Schedule classicHeader={classicHeader} darkTheme={darkTheme}></Schedule>
             <Testimonials
               classicHeader={classicHeader}
               darkTheme={darkTheme}
@@ -123,7 +130,9 @@ function App() {
 
         <TermsAndConditions darkTheme={darkTheme}></TermsAndConditions>
         <Disclaimer darkTheme={darkTheme}></Disclaimer>
+     
       </div>
+    
     </>
   );
 }

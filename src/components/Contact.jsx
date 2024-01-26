@@ -101,7 +101,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
         {/* Heading end*/}
         <div className="row gy-5">
           {/* contact details */}
-          <div className="col-md-4 col-xl-3 order-1 order-md-0 text-center text-md-start">
+          <div className="col-md-4 col-xl-3 order-1 order-md-0 text-center text-md-start contact-card">
             <h2
               className={
                 "mb-3 text-5 text-uppercase " + (darkTheme ? "text-white" : "")
@@ -177,7 +177,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
               <li className="social-icons-facebook">
                 <Tooltip text="Facebook" placement="top">
                   <a
-                    href="http://www.facebook.com/harnishdesign/"
+                    href={getJson("facebook-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

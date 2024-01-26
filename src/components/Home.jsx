@@ -52,7 +52,8 @@ const Home = ({ classicHeader, darkTheme, handleNavClick }) => {
                         "GHMC Clinic",
                         "No Insurance Required ",
                         //"Quality Healthcare, Zero Barriers",
-                        "Open For All !"
+                        "Open For All !",
+                        "ਕੋਈ ਬੀਮੇ ਦੀ ਲੋੜ ਨਹੀਂ"
                       ],
                       autoStart: true,
                       loop: true,
@@ -71,7 +72,7 @@ const Home = ({ classicHeader, darkTheme, handleNavClick }) => {
                     handleNavClick("contact");
                   }}
                 >
-                  Hire Me
+                  Contact Us
                 </a>
               </div>
             </div>
