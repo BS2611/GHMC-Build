@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 // import { ToastContainer, toast } from "react-toastify";
-import { getJson } from "../config/config";
+import { getDarkBg, getJson, getLightBg } from "../config/config";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Tooltip } from "./Tooltip";
@@ -24,7 +24,7 @@ const formatAddress = (string) =>{
   const formatAddrs = string.replace(",",'\n');
   return formatAddrs;
 }
-const Contact = ({ classicHeader, darkTheme }) => {
+const Contact = ({ classicHeader, darkTheme, compNo }) => {
   const form = useRef();
   const [sendingMail, setSendingMail] = useState(false);
 
@@ -74,7 +74,9 @@ const Contact = ({ classicHeader, darkTheme }) => {
   return (
     <section
       id="contact"
-      className={"section " + (darkTheme ? "bg-dark-2" : "bg-light")}
+      className={
+        "section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))
+      }
     >
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
         {/* Heading */}
@@ -112,7 +114,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
             <p
               className={
                 "text-3 mb-4 formatted-address" +
-                (darkTheme ? "text-light" : "")
+                (darkTheme ? " text-light" : "")
               }
             >
               {formatAddress(getJson("address"))}
@@ -152,21 +154,10 @@ const Contact = ({ classicHeader, darkTheme }) => {
                 (darkTheme ? "social-icons-muted" : "")
               }
             >
-              <li className="social-icons-dribbble">
-                <Tooltip text="Dribbble" placement="top">
-                  <a
-                    href="http://www.dribbble.com/harnishdesign/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-dribbble" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-twitter">
+              <li className="social-icons-twitter ">
                 <Tooltip text="Twitter" placement="top">
                   <a
-                    href="https://twitter.com/harnishdesign/"
+                    href={getJson("twitter-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -185,25 +176,14 @@ const Contact = ({ classicHeader, darkTheme }) => {
                   </a>
                 </Tooltip>
               </li>
-              <li className="social-icons-google">
-                <Tooltip text="Google" placement="top">
+              <li className="social-icons-instagram">
+                <Tooltip text="Instagram" placement="top">
                   <a
-                    href="http://www.google.com/"
+                    href={getJson("instagram-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i className="fab fa-google" />
-                  </a>
-                </Tooltip>
-              </li>
-              <li className="social-icons-github">
-                <Tooltip text="Github" placement="top">
-                  <a
-                    href="http://www.github.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-github" />
+                    <i className="fab fa-instagram" />
                   </a>
                 </Tooltip>
               </li>
@@ -214,7 +194,7 @@ const Contact = ({ classicHeader, darkTheme }) => {
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3161.7884620352706!2d-122.00079672554237!3d37.58359862315181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbff733eaaaab%3A0x87ad9fe71a53fb00!2sGurdwara%20Sahib%20Fremont!5e0!3m2!1sen!2sus!4v1705114896914!5m2!1sen!2sus"
               width="600"
-              className="mapsApi"
+              className={"mapsApi " + (darkTheme?"dark-maps":"")}
               allowfullscreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"

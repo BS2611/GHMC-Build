@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getJson, getStringyJson } from "../config/config";
+import { getDarkBg, getJson, getLightBg, getStringyJson } from "../config/config";
 import { end } from "@popperjs/core";
 
 
@@ -9,9 +9,9 @@ console.log("Clinc   " +data.toString());
 return JSON.parse(data);
 }
 
-const Schedule = ({classicHeader, darkTheme}) => {
+const Schedule = ({ classicHeader, darkTheme, compNo }) => {
   let data = getClinicTmings();
-  const getFormattedDate =(input) =>{
+  const getFormattedDate = (input) => {
     const days = [
       "Sunday",
       "Monday",
@@ -21,7 +21,20 @@ const Schedule = ({classicHeader, darkTheme}) => {
       "Friday",
       "Saturday",
     ];
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
     const obj = new Date(input + " 00:00:00");
     console.log("Checking date object" + obj.getDate());
 
@@ -29,23 +42,25 @@ const Schedule = ({classicHeader, darkTheme}) => {
     const month = months[obj.getMonth()];
     const date = obj.getDate();
 
-    return day +" " + month+", "+ date;
-  }
-   const DisplayData = data.map((info,index) => {
-     return (
-       <tr key ={index+1}>
-         <th scope="row">{index+1}</th>
-         <td>{getFormattedDate(info.date)}</td>
-         <td>{info.startTime +" - " +info.endTime}</td>
-         <td>{info.description}</td>
-       </tr>
-     );
-   });
+    return day + " " + month + ", " + date;
+  };
+  const DisplayData = data.map((info, index) => {
+    return (
+      <tr key={index + 1}>
+        <th scope="row">{index + 1}</th>
+        <td>{getFormattedDate(info.date)}</td>
+        <td>{info.startTime + " - " + info.endTime}</td>
+        <td>{info.description}</td>
+      </tr>
+    );
+  });
 
   return (
     <section
       id="schedule"
-      className={"section " + (darkTheme ? "bg-dark-2" : "bg-light")}
+      className={
+        "section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))
+      }
     >
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
         {/* Heading */}
@@ -69,23 +84,27 @@ const Schedule = ({classicHeader, darkTheme}) => {
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
-        <div className="table-responsive">        
-        <table className={"table table-bordered table-sm"+ " " + (darkTheme ? "table-dark-2" : "table-light")}>
-          <thead className="table-primary ">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Date</th>
-              <th scope="col">Time</th>
-              <th scope="col">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {DisplayData}
-          </tbody>
-        </table>
+        <div className="table-responsive">
+          <table
+            className={
+              "table table-bordered table-sm" +
+              " " +
+              (darkTheme ? "table-dark-2" : "table-light")
+            }
+          >
+            <thead className="table-primary ">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Time</th>
+                <th scope="col">Description</th>
+              </tr>
+            </thead>
+            <tbody>{DisplayData}</tbody>
+          </table>
         </div>
       </div>
     </section>
   );
-}
+};
 export default Schedule;

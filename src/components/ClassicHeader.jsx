@@ -4,9 +4,15 @@ import { Tooltip } from "./Tooltip";
 import { Link } from "react-scroll";
 import { getJson } from "../config/config";
 
-const ClassicHeader = ({ handleNavClick }) => {
+const ClassicHeader = ({ handleNavClick,darkTheme,setDarkTheme }) => {
   const [stickyHeader, setStickyHeader] = useState(false);
   const [isNavModalClose, setIsNavModalClose] = useState(true);
+
+  const changeTheme = () => {
+    console.log(darkTheme + "theme type before");
+    setDarkTheme(!darkTheme)
+    console.log(darkTheme + "theme type")
+  }
 
   const checkScrollTop = () => {
     let header = document.getElementsByClassName("primary-menu");
@@ -224,11 +230,21 @@ const ClassicHeader = ({ handleNavClick }) => {
             </div>
           </div>
           <div className="col-auto col-lg-2 d-flex justify-content-end">
-            <ul className="social-icons social-icons-light">
-              <li className="social-icons-twitter">
+            <ul className="social-icons social-icons-light mode">
+              <li className="switch-btn">
+                <Tooltip text = {(darkTheme?"Dark Mode" : "Light Mode")} placement="top">
+                  <a
+                      onClick={() =>{changeTheme()}}
+                  >
+                    <i className={(darkTheme?"fa-solid fa-moon" : "fa-solid fa-sun")} />
+                  </a>
+                </Tooltip>
+                
+              </li>
+              <li className="social-icons-twitter social-tab">
                 <Tooltip text="Twitter" placement="top">
                   <a
-                    href="http://www.twitter.com/"
+                    href={getJson("twitter-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -247,14 +263,14 @@ const ClassicHeader = ({ handleNavClick }) => {
                   </a>
                 </Tooltip>
               </li>
-              <li className="social-icons-dribbble">
-                <Tooltip text="Dribbble" placement="top">
+              <li className="social-icons-instagram">
+                <Tooltip text="Instagram" placement="top">
                   <a
-                    href="http://www.dribbble.com/"
+                    href={getJson("instagram-url")}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i className="fab fa-dribbble" />
+                    <i className="fab fa-instagram" />
                   </a>
                 </Tooltip>
               </li>

@@ -1,44 +1,17 @@
 import React from "react";
+import { getDarkBg, getJsonObject, getLightBg } from "../config/config";
 
-const Services = ({ classicHeader, darkTheme }) => {
+const Services = ({ classicHeader, darkTheme, compNo }) => {
   // services details
-  const services = [
-    {
-      name: "Graphic Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-palette",
-    },
-    {
-      name: "Web Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-desktop",
-    },
-    {
-      name: "UI/UX Design",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-pencil-ruler",
-    },
-    {
-      name: "App Design & Develop",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-paint-brush",
-    },
-    {
-      name: "Business Analysis",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-chart-area",
-    },
-    {
-      name: "SEO Marketing",
-      desc: "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
-      icon: "fas fa-bullhorn",
-    },
-  ];
+  const services = getJsonObject("services");
+
 
   return (
     <section
       id="services"
-      className={"section " + (darkTheme ? "bg-dark-2" : "bg-light")}
+      className={
+        "section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))
+      }
     >
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
         {/* Heading */}
@@ -93,6 +66,15 @@ const Services = ({ classicHeader, darkTheme }) => {
           </div>
         </div>
         {/* content end */}
+        <div className="container-fluid bg-primary py-3">
+          <div className="text-center text-6 text-white fw-bolder text-uppercase">
+            hipaa Certified
+          </div>
+          <div className="text-center text-white text-2">
+            All Doctors and Volunteers are HIPAA Certifed. All patients' data is
+            securly stored on our encrypted database. 
+          </div>
+        </div>
       </div>
     </section>
   );

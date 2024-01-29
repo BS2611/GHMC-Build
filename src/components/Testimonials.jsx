@@ -1,8 +1,9 @@
 import React from "react";
 
 import Slider from "react-slick";
+import { getDarkBg, getLightBg } from "../config/config";
 
-const Testimonials = ({ classicHeader, darkTheme }) => {
+const Testimonials = ({ classicHeader, darkTheme, compNo }) => {
   const reviews = [
     {
       name: "Dennis Jacques",
@@ -55,7 +56,9 @@ const Testimonials = ({ classicHeader, darkTheme }) => {
   return (
     <section
       id="testimonial"
-      className={"section " + (darkTheme ? "bg-dark-1" : "")}
+      className={
+        "section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))
+      }
     >
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
         {/* Heading */}
@@ -105,7 +108,7 @@ const Testimonials = ({ classicHeader, darkTheme }) => {
                       >
                         {value.name}
                       </strong>
-                      <span className="text-muted fw-500">
+                      <span className={" fw-500 " + (darkTheme ? "text-white" : "text-dark") }>
                         {" "}
                         {value.position}{" "}
                       </span>
@@ -118,11 +121,6 @@ const Testimonials = ({ classicHeader, darkTheme }) => {
                   >
                     “{value.desc}”
                   </p>
-                  <span className="text-2">
-                    {[...Array(value.rating)].map((value, i) => (
-                      <i className="fas fa-star text-warning" key={i} />
-                    ))}
-                  </span>
                 </div>
               </div>
             ))}

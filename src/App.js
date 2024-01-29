@@ -22,7 +22,15 @@ import Schedule from "./components/Schedule";
 
 function App() {
   const classicHeader = commonConfig.classicHeader;
-  const darkTheme = commonConfig.darkTheme;
+  let isDefaultDark;
+  if(localStorage.getItem("darkTheme") != null){
+    isDefaultDark = localStorage.getItem("darkTheme") == 'true' ? true:false;
+    console.log("Dark MOde  default changed if loop" + isDefaultDark);
+  }else{
+    isDefaultDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+
+  
 
   const handleNavClick = (section) => {
     document.getElementById(section).scrollIntoView({ behavior: "smooth" });
@@ -30,15 +38,29 @@ function App() {
 
   const [scrollTopVisible, setScrollTopVisible] = useState(false);
   const [isLoading, setisLoading] = useState(true);
-  const[compNo, setCompNo] = useState(0);
+  const[darkTheme, setDarkTheme] = useState(isDefaultDark);
+  console.log("Dark MOde  default changed " + isDefaultDark);
+  let compNo =0;
+
+  const updateCompNo =() =>{
+    compNo++;
+    return compNo;
+  }
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
       setisLoading(false);
+      
     }, 1000);
     return () => {
       clearTimeout(loadingTimeout);
     };
   }, []);
+  useEffect(() => {
+      console.log("Dark MOde changed " + darkTheme);
+      localStorage.setItem("darkTheme", darkTheme);
+    
+  }, [darkTheme])
+  
 
   const checkScrollTop = () => {
     let scrollTopBtn = document.getElementById("back-to-top");
@@ -59,6 +81,7 @@ function App() {
     window.addEventListener("scroll", checkScrollTop);
   }
 
+  
   return (
     <>
       <div
@@ -70,7 +93,7 @@ function App() {
 
         <div id="main-wrapper">
           {classicHeader ? (
-            <ClassicHeader handleNavClick={handleNavClick}></ClassicHeader>
+            <ClassicHeader handleNavClick={handleNavClick} darkTheme = {darkTheme} setDarkTheme = {setDarkTheme}></ClassicHeader>
           ) : (
             <Header handleNavClick={handleNavClick}></Header>
           )}
@@ -80,15 +103,16 @@ function App() {
               classicHeader={classicHeader}
               darkTheme={darkTheme}
               handleNavClick={handleNavClick}
-              // compNo = {getCompNo()}
             ></Home>
             <AboutUs
               classicHeader={classicHeader}
               darkTheme={darkTheme}
+              compNo={updateCompNo()}
             ></AboutUs>
             <Services
               classicHeader={classicHeader}
-              darkTheme={darkTheme}
+              darkTheme={darkTheme} 
+              compNo={updateCompNo()}
             ></Services>
             {/* <Resume
               classicHeader={classicHeader}
@@ -97,15 +121,18 @@ function App() {
             <Team
               classicHeader={classicHeader}
               darkTheme={darkTheme}
+              compNo={updateCompNo()}
             ></Team>
-            <Schedule classicHeader={classicHeader} darkTheme={darkTheme}></Schedule>
+            <Schedule classicHeader={classicHeader} darkTheme={darkTheme} compNo={updateCompNo()}></Schedule>
             <Testimonials
               classicHeader={classicHeader}
               darkTheme={darkTheme}
+              compNo={updateCompNo()}
             ></Testimonials>
             <Contact
               classicHeader={classicHeader}
               darkTheme={darkTheme}
+              compNo={updateCompNo()}
             ></Contact>
           </div>
           <Footer

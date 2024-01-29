@@ -1,9 +1,56 @@
-import React from "react";
+import React, { useEffect } from "react";
 import resumeFile from "../documents/resume.pdf";
 import Testimonials from "./Testimonials";
-const AboutUs = ({ classicHeader, darkTheme }) => {
+import data from "../config/info.json";
+import {getDarkBg,getLightBg,getStringyJson,getStringyNestedJson,} from "../config/config";
+const AboutUs = ({ classicHeader, darkTheme, compNo }) => {
+  let patients, awards , years ,projects,imgPath;
+  const getData = () => {
+    let output = getStringyJson("aboutus");
+    return JSON.parse(output);
+  };
+  const data = getData();
+  const setContent = data.map((info) => {
+      imgPath = info["img"];
+      return (
+        <>
+          <h2
+            className={"text-7 fw-600 mb-3 " + (darkTheme ? "text-white" : "")}
+          >
+            {info["heading"].split(info["heading-highlight"])[0]}
+            {""}
+            <span className="text-primary">{info["heading-highlight"]}</span>
+            {info["heading"].split(info["heading-highlight"])[1]}
+          </h2>
+          <p className={darkTheme ? "text-white-50" : ""}>
+            {info["paragraph-first"]}
+          </p>
+          <p className={darkTheme ? "text-white-50" : ""}>
+            {info["paragraph-second"]}
+          </p>
+        </>
+      );
+  });
+
+  const DisplayAchivements = () =>{
+    data.map((result) =>{
+      result["achivements"].map((value) =>{
+        patients=value["patients"];
+        awards = value["awards"];
+        years = value ["years"]
+        projects = value["projects"];
+      });
+    });
+    console.log("test "+ years)
+  }
+  DisplayAchivements();
   return (
-    <section id="about" className={"section " + (darkTheme ? "bg-dark-1" : "")}>
+    <section
+      id="about"
+      className={
+        "section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))
+      }
+    >
       <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
         {/* Heading */}
         <div className="position-relative d-flex text-center mb-5">
@@ -28,15 +75,16 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
         {/* Heading end*/}
         <div className="row gy-5">
           {/* About me content start */}
+          {/* {getStringyJson("heading").split(getStringyJson("heading-highlight"))[0]} <span className="text-primary">{getStringyJson("heading-higlight")}</span>{getStringyJson("heading").split(getStringyJson("heading-highlight"))[1]} */}
           <div className="col-lg-7 col-xl-8 text-center text-lg-start">
-            <h2
+            {/* <h2
               className={
                 "text-7 fw-600 mb-3 " + (darkTheme ? "text-white" : "")
               }
-            >
+                          >
               I'm <span className="text-primary">Simone Olivia,</span> a Web
               Developer
-            </h2>
+              </h2>
             <p className={darkTheme ? "text-white-50" : ""}>
               I help you build brand for your business at an affordable price.
               Thousands of clients have procured exceptional results while
@@ -47,12 +95,13 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               Delivering work within time and budget which meets client’s
               requirements is our moto. Lorem Ipsum has been the industry's
               standard dummy text ever when an unknown printer took a galley.
-            </p>
+            </p> */}
+            {setContent}
           </div>
           {/* About me content end */}
           {/* about me personal detials start */}
           <div className="col-lg-5 col-xl-4">
-            <div className="ps-lg-4">
+            {/*  <div className="ps-lg-4">
               <ul
                 className={
                   "list-style-2 " +
@@ -81,7 +130,13 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
               >
                 Download CV
               </a>
-            </div>
+            </div> */}
+            <img
+              className="img-fluid d-block"
+              
+              src = {imgPath}
+              alt="text"
+            />
           </div>
           {/* about me personal details end */}
         </div>
@@ -101,7 +156,8 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                     (darkTheme ? "text-white-50" : "text-muted")
                   }
                 >
-                  <span>10</span>+
+                  {DisplayAchivements}
+                  <span>{years}</span>+
                 </h4>
                 <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
                   Years Experiance
@@ -116,10 +172,10 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                     (darkTheme ? "text-white-50" : "text-muted")
                   }
                 >
-                  <span>250</span>+
+                  <span>{patients}</span>+
                 </h4>
                 <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
-                  Happy Clients
+                  Happy Patients
                 </p>
               </div>
             </div>
@@ -131,7 +187,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                     (darkTheme ? "text-white-50" : "text-muted")
                   }
                 >
-                  <span>650</span>+
+                  <span>{projects}</span>+
                 </h4>
                 <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
                   Projects Done
@@ -146,7 +202,7 @@ const AboutUs = ({ classicHeader, darkTheme }) => {
                     (darkTheme ? "text-white-50" : "text-muted")
                   }
                 >
-                  <span>38</span>
+                  <span>{awards}</span>
                 </h4>
                 <p className={"mb-0 " + (darkTheme ? "text-light" : "")}>
                   {"Get Awards"}

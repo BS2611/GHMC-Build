@@ -1,12 +1,12 @@
 import React from "react";
 import Typewriter from "typewriter-effect";
 import { getJson } from "../config/config";
+import { Link } from "react-scroll";
 //import videobg from "../videos/home.mp4";
 
 
 const getClinicDates = () =>{
   //TODO: Write code for extracting dates from a json file
-  let dataH = ["Jan 27","Feb 3","March 5"];
   //* write the data extraction here
   const dates = getJson("clinicDates");
  
@@ -53,7 +53,7 @@ const Home = ({ classicHeader, darkTheme, handleNavClick }) => {
                         "No Insurance Required ",
                         //"Quality Healthcare, Zero Barriers",
                         "Open For All !",
-                        "ਕੋਈ ਬੀਮੇ ਦੀ ਲੋੜ ਨਹੀਂ"
+                        "ਕੋਈ ਬੀਮੇ ਦੀ ਲੋੜ ਨਹੀਂ",
                       ],
                       autoStart: true,
                       loop: true,
@@ -63,7 +63,19 @@ const Home = ({ classicHeader, darkTheme, handleNavClick }) => {
                 <p className="text-5 text-light mb-4">
                   based in Fremont, California.
                 </p>
-                <p id="dates" className="text-5 text-light mb-4"> <u>Upcoming Clinics:</u>{" "+getClinicDates()} </p>
+                <p id="dates" className="text-5 text-light mb-4">
+                  {" "}
+                  <u>Upcoming Clinics:</u>
+                { " "}
+                <a
+                  href="#schedule"
+                  className="schedule-redirect text-white smooth-scroll"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick("contact");
+                  }}
+                >{getClinicDates()}</a>{" "}
+                </p>
                 <a
                   href="#contact"
                   className="btn btn-outline-primary rounded-pill shadow-none smooth-scroll mt-2"

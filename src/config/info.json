@@ -1,72 +1,126 @@
 {
-    "comments":"//TODO: Replace Placeholders with actual urls ",
-    "twitter-url":"https://www.twitter.com",
-    "facebook-url":"https://www.facebook.com ",
-    "clinicDates": ["Jan 1", "Feb 3", "March 5"],
-    "address":"300 Gurdwara Rd,Fremont, CA 94536",
-    "email":"bhavpreetsingh93@gmail.com",
-    "mobNo":6505337085,
-    "telNo":6505337085,
-    "teamInfo":[
+    "comments": "//TODO: Replace Placeholders with actual urls ",
+    "twitter-url": "https://www.twitter.com",
+    "facebook-url": "https://www.facebook.com ",
+    "intstagram-url": "instagram-url",
+    "clinicDates": [
+        "Jan 1",
+        "Feb 3",
+        "March 5"
+    ],
+    "address": "300 Gurdwara Rd,Fremont, CA 94536",
+    "email": "email@example.com",
+    "mobNo": 6505337085,
+    "telNo": 6505337085,
+    "teamInfo": [
         {
-            "name":"Bhavpreet",
-
-            "type": "volunteer"
+            "name": "Enter name",
+            "profileimage": "enter img",
+            "about-me": "enter info",
+            "education": "",
+            "quick intro": "",
+            "role": "your role in the team"
         }
     ],
-    "aboutus":[
+    "aboutus": [
         {
-            
+            "img": "images/projects/project-3.jpg",
+            "heading": "I'm Simone Olivia, a Web Developer",
+            "heading-highlight":"Simone Olivia,",
+            "paragraph-first": "I help you build brand for your business at an affordable price. Thousands of clients have procured exceptional results while working with our dedicated team. when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            "paragraph-second": "Delivering work within time and budget which meets client’s requirements is our moto. Lorem Ipsum has been the industry's standard dummy text ever when an unknown printer took a galley.",
+            "achivements": [
+                {
+                    "patients": 250,
+                    "years": 10,
+                    "awards": 38,
+                    "projects": 650
+                }
+            ]
         }
-
     ],
-    "clinicDetails":[
+    "services":[
+        {
+      "name": "Graphic Design",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-palette"
+    },
+    {
+      "name": "Web Design",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-desktop"
+    },
+    {
+      "name": "UI/UX Design",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-pencil-ruler"
+    },
+    {
+      "name": "App Design & Develop",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-paint-brush"
+    },
+    {
+      "name": "Business Analysis",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-chart-area"
+    },
+    {
+      "name": "SEO Marketing",
+      "desc": "Lisque persius interesset his et, in quot quidam persequeris vim, ad mea essent possim iriure.",
+      "icon": "fas fa-bullhorn"
+    }
+    ],
+    "clinicDetails": [
         {
             "startTime": "9:00AM",
-            "endTime":"11:00AM",
+            "endTime": "11:00AM",
             "date": "2024-01-24",
-            "description":" this is desc"
+            "description": " this is desc"
         },
         {
             "startTime": "10:00AM",
-            "endTime":"11:00AM",
+            "endTime": "11:00AM",
             "date": "2024-02-14",
-            "description":"Details about the event"
+            "description": "Details about the event"
         },
         {
             "startTime": "1:00PM",
-            "endTime":"4:00PM",
+            "endTime": "4:00PM",
             "date": "2024-02-14",
-            "description":" Details about the event"
+            "description": " Details about the event"
         },
         {
             "startTime": "1:00PM",
-            "endTime":"4:00PM",
+            "endTime": "4:00PM",
             "date": "2024-02-14",
-            "description":" Details about the event"
+            "description": " Details about the event"
         },
         {
             "startTime": "1:00PM",
-            "endTime":"4:00PM",
+            "endTime": "4:00PM",
             "date": "2024-02-14",
-            "description":" Details about the event"
+            "description": " Details about the event"
         },
         {
             "startTime": "1:00PM",
-            "endTime":"4:00PM",
+            "endTime": "4:00PM",
             "date": "2024-02-14",
-            "description":" Details about the event"
+            "description": " Details about the event"
+        },
+        {
+            "startTime": "1:00PM",
+            "endTime": "4:00PM",
+            "date": "2024-02-14",
+            "description": " Details about the event"
         }
-,
-        {
-            "startTime": "1:00PM",
-            "endTime":"4:00PM",
-            "date": "2024-02-14",
-            "description":" Details about the event"
-        }
-
-
-
-
+    ],
+    "reviews":[
+    {
+        "name":"Enter name",
+        "description":"person's review",
+        "img":"path",
+        "video":"path"
+    }
     ]
 }

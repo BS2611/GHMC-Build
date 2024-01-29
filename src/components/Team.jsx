@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Isotope from "isotope-layout";
 import ProjectDetailsModal from "./ProjectDetailsModal";
-import { getJson } from "../config/config";
-const Team = ({ classicHeader, darkTheme }) => {
+import { getDarkBg, getJson, getLightBg } from "../config/config";
+const Team = ({ classicHeader, darkTheme, compNo }) => {
   // init one ref to store the future isotope object
   const isotope = useRef();
   // store the filter keyword in a state
@@ -229,7 +229,7 @@ const Team = ({ classicHeader, darkTheme }) => {
     <>
       <section
         id="portfolio"
-        className={"section " + (darkTheme ? "bg-dark-2" : "bg-light")}
+        className={"section " + (darkTheme ? getDarkBg(compNo) : getLightBg(compNo))}
       >
         <div className={"container " + (classicHeader ? "" : "px-lg-5")}>
           {/* Heading */}

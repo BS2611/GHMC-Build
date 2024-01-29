@@ -1,3 +1,4 @@
+$primary-color: rgb(5, 156, 254);
 .member-image {
     max-width: 100%;
     height: 280px;
@@ -58,10 +59,30 @@
 }
 
 #join-lbl:hover+#join-btn {
-    border: 2px solid rgb(5, 156, 254);
-    color: rgb(5, 156, 254);
+    border: 2px solid $primary-color;
+    color: $primary-color;
+}
+
+.social-tab{
+    border-left-color: white;
+    border-left-style: solid;
+    padding-left: 2px;
+}
+.mode{
+    padding: 0px 2px 0px 0px;
 }
 
 #join-btn {
     margin-left: 0%;
+}
+li:hover.switch-btn{
+    color: $primary-color;
+}
+a:hover.schedule-redirect{
+    color: $primary-color !important;
+    text-decoration: underline;
+    cursor: grab;
+}
+.dark-maps{
+    filter: invert(90%);
 }
