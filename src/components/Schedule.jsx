@@ -84,15 +84,13 @@ const Schedule = ({ classicHeader, darkTheme, compNo }) => {
             <span className="heading-separator-line border-bottom border-3 border-primary d-block mx-auto" />
           </p>
         </div>
-        <div className="table-responsive">
+        <div className="table-responsive rounded-lg scroll-table">
           <table
             className={
-              "table table-bordered table-sm" +
-              " " +
-              (darkTheme ? "table-dark-2" : "table-light")
+              "table table-sm table-striped text-center" 
             }
           >
-            <thead className="table-primary ">
+            <thead className={""+  (darkTheme ? "table-dark text-primary" : "table-primary")}>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Date</th>
@@ -100,7 +98,7 @@ const Schedule = ({ classicHeader, darkTheme, compNo }) => {
                 <th scope="col">Description</th>
               </tr>
             </thead>
-            <tbody>{DisplayData}</tbody>
+            <tbody className={"table-hover "+ (darkTheme ? "table-dark  " : "table-light")}>{DisplayData}</tbody>
           </table>
         </div>
       </div>

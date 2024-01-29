@@ -86,3 +86,8 @@ a:hover.schedule-redirect{
 .dark-maps{
     filter: invert(90%);
 }
+.scroll-table{
+    height: 200px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
